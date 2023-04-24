@@ -1,6 +1,8 @@
 //Todo app
 
 import React, { useState } from "react";
+import './App.css'
+
 
 function Todo() {
   const [task, includeTask] = useState([]);
@@ -26,7 +28,7 @@ function Todo() {
   return (
     <>
       <input value={input} onChange={inputChangeHandler} type="text" />
-      <button onClick={addTask}>Add</button>
+      <button className="addButton" onClick={addTask}>Add</button>
 
       {task.map((tasks, index) => (
         <li key={index}>
