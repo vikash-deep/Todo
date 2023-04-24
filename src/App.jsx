@@ -7,15 +7,18 @@ import './App.css'
 function Todo() {
   const [task, includeTask] = useState([]);
   const [input, setInput] = useState("");
+  const[btnStatus,setBtnStatus]=useState(true);
 
   function inputChangeHandler(e) {
     setInput(e.target.value);
+    (e.target.value)?setBtnStatus(false):setBtnStatus(true);
   }
 
   function addTask() {
     if (input !== "") {
       includeTask([...task, input]);
       setInput("");
+      setBtnStatus(true)
     }
   }
 
@@ -28,12 +31,12 @@ function Todo() {
   return (
     <>
       <input value={input} onChange={inputChangeHandler} type="text" />
-      <button className="addButton" onClick={addTask}>Add</button>
+      <button disabled={btnStatus}  className="addButton" onClick={addTask}>Add</button>
 
       {task.map((tasks, index) => (
         <li key={index}>
           {tasks}
-          <button onClick={() => removeTask(index)}>remove</button>
+          <button   onClick={() => removeTask(index)}>remove</button>
         </li>
       ))}
     </>
