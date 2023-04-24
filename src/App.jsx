@@ -15,11 +15,9 @@ function Todo() {
   }
 
   function addTask() {
-    if (input !== "") {
       includeTask([...task, input]);
       setInput("");
       setBtnStatus(true)
-    }
   }
 
   function removeTask(index) {
