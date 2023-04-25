@@ -1,4 +1,54 @@
 .addButton{
   display: block;
   margin-top: 5px;
+  align-self: center;
+}
+
+*{
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body{
+  width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+.todoCard{
+  display: flex;
+  flex-direction: column;
+  background-color: #2b5d5d99;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 410px;
+}
+.todoCard input{
+  outline: none;
+  margin-top: 11px;
+  padding: 5px;
+  border-radius: 4px;
+  border: none;
+}
+.todoCard li{
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+  margin-bottom: 11px;
+  color: white;
+}
+h4{
+  text-align: center;
+  color: white;
+}
+.taskList{
+  border-bottom: 1px solid white;
+}
+.delButton{
+  background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
 }

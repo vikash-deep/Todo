@@ -1,42 +1,48 @@
 //Todo app
 
 import React, { useState } from "react";
-import './App.css'
-
+import "./App.css";
 
 function Todo() {
-  const [task, includeTask] = useState([]);
+  const [tasks, includeTask] = useState([]);
   const [input, setInput] = useState("");
-  const[btnStatus,setBtnStatus]=useState(true);
+  const [btnStatus, setBtnStatus] = useState(true);
 
   function inputChangeHandler(e) {
     setInput(e.target.value);
-    (e.target.value)?setBtnStatus(false):setBtnStatus(true);
+    e.target.value ? setBtnStatus(false) : setBtnStatus(true);
   }
 
   function addTask() {
-      includeTask([...task, input]);
-      setInput("");
-      setBtnStatus(true)
+    includeTask([...tasks, input]);
+    setInput("");
+    setBtnStatus(true);
   }
 
   function removeTask(index) {
-    const newTask = [...task];
-    newTask.splice(index, 1);
-    includeTask(newTask);
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    includeTask(newTasks);
   }
 
   return (
     <>
-      <input value={input} onChange={inputChangeHandler} type="text" />
-      <button disabled={btnStatus}  className="addButton" onClick={addTask}>Add</button>
+      <div className="todoCard">
+        <div className="taskList">
+          <h4>Tasks</h4>
+        {tasks.map((task, index) => (
+          <li key={index}>
+            {tasks}
+            <button className="delButton" onClick={() => removeTask(index)}>x</button>
+          </li>
+        ))}
+        </div>
 
-      {task.map((tasks, index) => (
-        <li key={index}>
-          {tasks}
-          <button   onClick={() => removeTask(index)}>remove</button>
-        </li>
-      ))}
+        <input value={input} onChange={inputChangeHandler} placeholder="Enter Task" type="text" />
+        <button disabled={btnStatus} className="addButton" onClick={addTask}>
+          Add
+        </button>
+      </div>
     </>
   );
 }
